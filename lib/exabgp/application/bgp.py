@@ -52,8 +52,12 @@ def main ():
 	major = int(sys.version[0])
 	minor = int(sys.version[2])
 
-	if major != 2 or minor < 5:
-		sys.exit('This program can not work (is not tested) with your python version (< 2.5 or >= 3.0)')
+	if major == 2:
+		if minor < 5:
+			sys.exit('This program can not work (is not tested) with your python version (< 2.5)')
+		print('python2 support is deprecated (may still work but will not be tested)')
+	if major == 3 and minor < 5:
+		sys.exit('This program can not work (is not tested) with your python version (< 3.5)')
 
 	if options["--version"]:
 		print('ExaBGP : %s' % version)
